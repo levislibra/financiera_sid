@@ -1,0 +1,31 @@
+<openerp>
+	<data>
+<!-- Vista Form Partner Page SID -->
+
+    <record id="partner_sid_form_inherited"  model="ir.ui.view">
+      <field name="name">Extension Partner sid form</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//page[2]" position='after'>
+          <page string='SID' groups="financiera_sid.user">
+						<group string="Consulta DNI" col="2">
+							<label for="button_obtener_datos_sid" string=" "/>
+							<button name="button_obtener_datos_sid" string="Obtener datos DNI" type="object" confirm="Puede tener costo adicional. Desea confirmar?"/>
+							<field name="sid_ids" readonly="1">
+								<field name="apellido"/>
+								<field name="nombres"/>
+								<field name="cuit"/>
+								<field name="mensaje_fallecido"/>
+								<field name="vencimiento"/>
+								<field name="mensaje"/>
+							</field>
+							<field name="sid_id" readonly="1"/>
+						</group>
+          </page>
+        </xpath>
+      </field>
+		</record>
+
+	</data>
+</openerp>

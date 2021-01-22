@@ -1,0 +1,66 @@
+<openerp>
+  <data>
+
+		<record model="ir.ui.view" id="sid_tree">
+      <field name="name">financiera.sid.config.tree</field>
+      <field name="model">financiera.sid.config</field>
+      <field name="arch" type="xml">
+        <tree create="false" delete="false">
+          <field name="name"/>
+          <field name="company_id" groups="base.group_erp_manager"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="sid_form">
+      <field name="name">financiera.sid.config.form</field>
+      <field name="model">financiera.sid.config</field>
+      <field name="arch" type="xml">
+        <form create="false" delete="false">
+          <sheet>
+						<group>
+							<field name="company_id" groups="base.group_erp_manager"/>
+							<field name="name"/>
+						</group>
+            <group>
+              <group string="API Datos">
+								<field name="api_datos_usuario"/>
+								<field name="api_datos_clave"/>
+								<label for="obtener_api_datos_token" string=" "/>
+								<button name="obtener_api_datos_token" string="Actualizar token datos"
+									type="object" confirm="Desea confirmar?"/>
+								<field name="api_datos_token" widget="text" style="max-width: 450px;"/>
+							</group>
+							<group string="API Rostro">
+								<field name="api_rostro_usuario"/>
+								<field name="api_rostro_clave"/>
+								<label for="obtener_api_rostro_token" string=" "/>
+								<button name="obtener_api_rostro_token" string="Actualizar token rostro"
+									type="object" confirm="Desea confirmar?"/>
+								<field name="api_rostro_token" widget="text" style="max-width: 450px;"/>
+							</group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="sid_action">
+      <field name="name">Configuracion</field>
+      <field name="res_model">financiera.sid.config</field>
+      <field name="view_mode">tree,form</field>
+      <!-- <field name="context">{'search_default_pendientes':0}</field> -->
+      <field name="view_ids" eval="[(5, 0, 0), 
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('sid_tree')}), 
+        (0, 0, {'view_mode': 'form', 'view_id': ref('sid_form')})]"/>
+    </record>
+
+		<!-- Top menu item -->
+				
+		<menuitem name="Sistema de identificación biométrico" id="menu_sid" groups="financiera_sid.manager"
+			web_icon="financiera_sid,static/description/icon.png"/>
+		<menuitem name="Configuracion" id="menu_sid_action" parent="menu_sid" 
+			action="sid_action" sequence="10"/>
+
+	</data>
+</openerp>

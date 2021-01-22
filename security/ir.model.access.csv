@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+user_financiera_sid_config,financiera.sid.config,model_financiera_sid_config,financiera_sid.user,1,0,0,0
+manager_financiera_sid_config,financiera.sid.config,model_financiera_sid_config,financiera_sid.manager,1,1,1,0
+
+user_financiera_sid_datos,financiera.sid.datos,model_financiera_sid_datos,financiera_sid.user,1,1,1,0
+manager_financiera_sid_datos,financiera.sid.datos,model_financiera_sid_datos,financiera_sid.manager,1,1,1,0
