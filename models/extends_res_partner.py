@@ -25,6 +25,8 @@ class ExtendsResPartnerSid(models.Model):
 			url = URL
 			if tramite == None:
 				url += "/porDniSexo.php?dni=%s&sexo=%s"%(str(dni),str(sexo))
+			else:
+				url += "porDniSexoTramite.php?dni=%s&sexo=%s&idtramite=%s"%(str(dni),str(sexo),str(tramite))
 			headers = {
 				'authorization': "Bearer %s"%token,
 			}
@@ -33,7 +35,7 @@ class ExtendsResPartnerSid(models.Model):
 			print("data: ", data)
 			new_sid_id = self.env['financiera.sid.datos'].from_dict(data, self.id)
 			self.sid_ids = [new_sid_id.id]
-			if new_sid_id.codigo == 0:
+			if new_sid_id.codigo == 99:
 				self.sid_id = new_sid_id.id
 		else:
 			raise ValidationError("Falta configurar SID. Contacte al administrador!")

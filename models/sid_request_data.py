@@ -84,7 +84,7 @@ class SidDatos(models.Model):
 		if isinstance(obj, dict):
 			values = {
 				'id_tramite_principal': from_str(obj.get(u"id_tramite_principal")),
-				'id_tramite_tarjeta_reimpresa': from_int(obj.get(u"id_tramite_tarjeta_reimpresa")),
+				'id_tramite_tarjeta_reimpresa': int(obj.get(u"id_tramite_tarjeta_reimpresa")),
 				'ejemplar': from_str(obj.get(u"ejemplar")),
 				'vencimiento': from_datetime(obj.get(u"vencimiento")),
 				'emision': from_datetime(obj.get(u"emision")),

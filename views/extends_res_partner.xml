@@ -13,12 +13,14 @@
 							<label for="button_obtener_datos_sid" string=" "/>
 							<button name="button_obtener_datos_sid" string="Obtener datos DNI" type="object" confirm="Puede tener costo adicional. Desea confirmar?"/>
 							<field name="sid_ids" readonly="1">
-								<field name="apellido"/>
-								<field name="nombres"/>
-								<field name="cuit"/>
-								<field name="mensaje_fallecido"/>
-								<field name="vencimiento"/>
-								<field name="mensaje"/>
+								<tree>
+									<field name="apellido"/>
+									<field name="nombres"/>
+									<field name="cuil"/>
+									<field name="mensaje_fallecido"/>
+									<field name="vencimiento"/>
+									<field name="mensaje"/>
+								</tree>
 							</field>
 							<field name="sid_id" readonly="1"/>
 						</group>
