@@ -26,30 +26,26 @@ class FinancieraSidConfig(models.Model):
 	company_id = fields.Many2one('res.company', 'Empresa')
 
 	@api.one
-	def obtener_api_datos_token(self):
+	def set_api_datos_token(self):
 		body = {
 			'username': self.api_datos_usuario,
 			'password': self.api_datos_clave,
 		}
-		# r = requests.post(URL_API_DATOS, data=body)
-		# test
 		r = requests.post(URL_API_DATOS, data=body)
 		data = r.json()
 		print("data: ", data)
 		print("data['mensaje']: ", data['data']['mensaje'])
-		if 'data' in data and data['data']['codigo'] == 99:
+		if 'data' in data and data['data']['codigo'] == 0:
 			self.api_datos_token = data['data']['token']
 		elif 'data' in data:
 			raise UserError(data['data']['mensaje'])
 
 	@api.one
-	def obtener_api_rostro_token(self):
+	def set_api_rostro_token(self):
 		body = {
 			'username': self.api_rostro_usuario,
 			'password': self.api_rostro_clave,
 		}
-		# r = requests.post(URL_API_DATOS, data=body)
-		# test
 		r = requests.post(URL_API_DATOS, data=body)
 		data = r.json()
 		print("data: ", data)

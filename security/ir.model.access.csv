@@ -5,3 +5,6 @@ manager_financiera_sid_config,financiera.sid.config,model_financiera_sid_config,
 
 user_financiera_sid_datos,financiera.sid.datos,model_financiera_sid_datos,financiera_sid.user,1,1,1,0
 manager_financiera_sid_datos,financiera.sid.datos,model_financiera_sid_datos,financiera_sid.manager,1,1,1,0
+
+user_financiera_sid_rostro,financiera.sid.rostro,model_financiera_sid_rostro,financiera_sid.user,1,1,1,0
+manager_financiera_sid_rostro,financiera.sid.rostro,model_financiera_sid_rostro,financiera_sid.manager,1,1,1,0

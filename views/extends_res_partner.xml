@@ -10,10 +10,10 @@
         <xpath expr="//page[2]" position='after'>
           <page string='SID' groups="financiera_sid.user">
 						<group string="Consulta DNI" col="2">
-							<label for="button_obtener_datos_sid" string=" "/>
-							<button name="button_obtener_datos_sid" string="Obtener datos DNI" type="object" confirm="Puede tener costo adicional. Desea confirmar?"/>
+							<label for="obtener_datos_sid" string=" "/>
+							<button name="obtener_datos_sid" string="Obtener datos DNI" type="object" confirm="Puede tener costo adicional. Desea confirmar?"/>
 							<field name="sid_ids" readonly="1">
-								<tree>
+								<tree limit="4">
 									<field name="apellido"/>
 									<field name="nombres"/>
 									<field name="cuil"/>
@@ -23,6 +23,22 @@
 								</tree>
 							</field>
 							<field name="sid_id" readonly="1"/>
+						</group>
+						<group string="Consulta Rostro" col="2">
+							<label for="obtener_rostro_sid" string=" "/>
+							<button name="obtener_rostro_sid" string="Obtener SID Rostro" type="object" confirm="Puede tener costo adicional. Desea confirmar?"/>
+							<field name="sid_rostro_ids" readonly="1">
+								<tree limit="4">
+									<field name="codigo"/>
+									<field name="mensaje"/>
+									<field name="transaction_control_number"/>
+									<field name="status"/>
+									<field name="score"/>
+									<field name="fechanoti"/>
+									<button name="obtener_resultado" string="Obtener Resultado" type="object" class="oe_highlight"/>
+								</tree>
+							</field>
+							<field name="sid_rostro_id" readonly="1"/>
 						</group>
           </page>
         </xpath>

@@ -38,6 +38,7 @@ def to_class(c, x):
 class SidDatos(models.Model):
 	_name = 'financiera.sid.datos'
 	
+	_order = "id desc"
 	name = fields.Char('Nombre para mostrar')	
 	partner_id = fields.Many2one("res.partner", "Cliente")
 	id_tramite_principal = fields.Char("Id tramite principal")
