@@ -26,16 +26,16 @@
               <group string="API Datos">
 								<field name="api_datos_usuario"/>
 								<field name="api_datos_clave"/>
-								<label for="obtener_api_datos_token" string=" "/>
-								<button name="obtener_api_datos_token" string="Actualizar token datos"
+								<label for="set_api_datos_token" string=" "/>
+								<button name="set_api_datos_token" string="Actualizar token datos"
 									type="object" confirm="Desea confirmar?"/>
 								<field name="api_datos_token" widget="text" style="max-width: 450px;"/>
 							</group>
 							<group string="API Rostro">
 								<field name="api_rostro_usuario"/>
 								<field name="api_rostro_clave"/>
-								<label for="obtener_api_rostro_token" string=" "/>
-								<button name="obtener_api_rostro_token" string="Actualizar token rostro"
+								<label for="set_api_rostro_token" string=" "/>
+								<button name="set_api_rostro_token" string="Actualizar token rostro"
 									type="object" confirm="Desea confirmar?"/>
 								<field name="api_rostro_token" widget="text" style="max-width: 450px;"/>
 							</group>
