@@ -27,6 +27,7 @@ class ExtendsResPartnerSid(models.Model):
 	@api.one
 	def obtener_datos(self, dni, sexo, tramite=None):
 		if len(self.company_id.sid_id) > 0:
+			self.company_id.sid_id.set_api_datos_token()
 			token = self.company_id.sid_id.api_datos_token
 			url = URL
 			if tramite == None:
@@ -42,9 +43,6 @@ class ExtendsResPartnerSid(models.Model):
 				new_sid_id = self.env['financiera.sid.datos'].from_dict(data, self.id)
 				self.sid_ids = [new_sid_id.id]
 				self.sid_id = new_sid_id.id
-			elif data['codigo'] == 1:
-				self.company_id.sid_id.set_api_datos_token()
-				return self.obtener_datos(dni, sexo, tramite=tramite)
 		else:
 			raise ValidationError("Falta configurar SID. Contacte al administrador!")
 	
@@ -64,6 +62,7 @@ class ExtendsResPartnerSid(models.Model):
 	def obtener_rostro(self, imagen, dni, sexo):
 		if len(self.company_id.sid_id) > 0:
 			self.sid_rostro_id = None
+			self.company_id.sid_id.set_api_rostro_token()
 			token = self.company_id.sid_id.api_rostro_token
 			url = URL_ROSTRO + "CHUTROFINAL/API_ABIS/apiInline_v3.php"
 			headers = {
@@ -80,13 +79,12 @@ class ExtendsResPartnerSid(models.Model):
 				new_sid_rostro_id = self.env['financiera.sid.rostro'].from_dict(data['data'], self.id)
 				self.sid_rostro_ids = [new_sid_rostro_id.id]
 				self.sid_rostro_id = new_sid_rostro_id.id
-				i = 0
-				if new_sid_rostro_id.status == False and i <= 5:
+				# Obtener resultado puede demorar hasta 5 segundos o mas luego
+				# de la consulta - ver como manejar esto
+				i = 1
+				while (new_sid_rostro_id.status == False and i <= 10):
 					new_sid_rostro_id.obtener_resultado()
 					i = i + 1
-			elif data['codigo_http'] == 200 and data['data']['codigo'] == 1:
-				self.company_id.sid_id.set_api_rostro_token()
-				return self.obtener_rostro(imagen, dni, sexo)
 		else:
 			raise ValidationError("Falta configurar SID. Contacte al administrador!")
 	
