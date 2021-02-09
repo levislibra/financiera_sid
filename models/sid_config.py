@@ -33,8 +33,6 @@ class FinancieraSidConfig(models.Model):
 		}
 		r = requests.post(URL_API_DATOS, data=body)
 		data = r.json()
-		print("data: ", data)
-		print("data['mensaje']: ", data['data']['mensaje'])
 		if 'data' in data and data['data']['codigo'] == 0:
 			self.api_datos_token = data['data']['token']
 		elif 'data' in data:
@@ -48,8 +46,6 @@ class FinancieraSidConfig(models.Model):
 		}
 		r = requests.post(URL_API_DATOS, data=body)
 		data = r.json()
-		print("data: ", data)
-		print("data['mensaje']: ", data['data']['mensaje'])
 		if 'data' in data and data['data']['codigo'] == 0:
 			self.api_rostro_token = data['data']['token']
 		elif 'data' in data:
