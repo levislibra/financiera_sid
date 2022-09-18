@@ -1,48 +1,48 @@
 <openerp>
 	<data>
-<!-- Vista Form Partner Page SID -->
+		<!-- Vista Form Partner Page SID -->
 
-    <record id="partner_sid_form_inherited"  model="ir.ui.view">
-      <field name="name">Extension Partner sid form</field>
-      <field name="model">res.partner</field>
-      <field name="inherit_id" ref="base.view_partner_form"/>
-      <field name="arch" type="xml">
-        <xpath expr="//page[2]" position='after'>
-          <page string='SID' groups="financiera_sid.user">
+		<record id="partner_sid_form_inherited" model="ir.ui.view">
+			<field name="name">Extension Partner sid form</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//page[@name='internal_notes']" position='after'>
+					<page string='Renaper SID' groups="financiera_sid.user">
 						<group string="Consulta DNI" col="2">
-							<label for="obtener_datos_sid" string=" "/>
-							<button name="obtener_datos_sid" string="Obtener datos DNI" type="object" confirm="Puede tener costo adicional. Desea confirmar?"/>
+							<label for="obtener_datos_sid" string=" " />
+							<button name="obtener_datos_sid" string="Obtener datos DNI" type="object" confirm="Puede tener costo adicional. Desea confirmar?" />
 							<field name="sid_ids" readonly="1">
 								<tree limit="4">
-									<field name="apellido"/>
-									<field name="nombres"/>
-									<field name="cuil"/>
-									<field name="mensaje_fallecido"/>
-									<field name="vencimiento"/>
-									<field name="mensaje"/>
+									<field name="apellido" />
+									<field name="nombres" />
+									<field name="cuil" />
+									<field name="mensaje_fallecido" />
+									<field name="vencimiento" />
+									<field name="mensaje" />
 								</tree>
 							</field>
-							<field name="sid_id" readonly="1"/>
+							<field name="sid_id" readonly="1" />
 						</group>
 						<group string="Consulta Rostro" col="2">
-							<label for="obtener_rostro_sid" string=" "/>
-							<button name="obtener_rostro_sid" string="Obtener SID Rostro" type="object" confirm="Puede tener costo adicional. Desea confirmar?"/>
+							<label for="obtener_rostro_sid" string=" " />
+							<button name="obtener_rostro_sid" string="Obtener SID Rostro" type="object" confirm="Puede tener costo adicional. Desea confirmar?" />
 							<field name="sid_rostro_ids" readonly="1">
 								<tree limit="4">
-									<field name="codigo"/>
-									<field name="mensaje"/>
-									<field name="transaction_control_number"/>
-									<field name="status"/>
-									<field name="score"/>
-									<field name="fechanoti"/>
-									<button name="obtener_resultado" string="Obtener Resultado" type="object" class="oe_highlight"/>
+									<field name="codigo" />
+									<field name="mensaje" />
+									<field name="transaction_control_number" />
+									<field name="status" />
+									<field name="score" />
+									<field name="fechanoti" />
+									<button name="obtener_resultado" string="Obtener Resultado" type="object" class="oe_highlight" />
 								</tree>
 							</field>
-							<field name="sid_rostro_id" readonly="1"/>
+							<field name="sid_rostro_id" readonly="1" />
 						</group>
-          </page>
-        </xpath>
-      </field>
+					</page>
+				</xpath>
+			</field>
 		</record>
 
 	</data>
